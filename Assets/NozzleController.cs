@@ -35,7 +35,10 @@ public class ControllerInput : MonoBehaviour
     private void useNozzle() {
         // Spray the smoke
         nozzle.GetComponent<LaunchProjectile>().Fire();
+        movePlayer3();
+    }
 
+    private void movePlayer1() {
         // Move the Player
         //Debug.Log(transform.eulerAngles.y - nozzle.transform.eulerAngles.y);
         GetComponent<Rigidbody>().AddForce(-nozzle.transform.forward * nozzleStrength);
@@ -56,5 +59,15 @@ public class ControllerInput : MonoBehaviour
         if(math.abs(betterAngle) > rotationThreshold) {
             GetComponent<Rigidbody>().AddTorque(0, betterAngle * nozzleRotationStrength, 0);
         }
+    }
+
+    private void movePlayer2() {
+        UnityEngine.Vector3 torque = UnityEngine.Vector3.Cross(transform.position, -nozzle.transform.position);
+        torque.y = 0;
+        GetComponent<Rigidbody>().AddForceAtPosition(torque, transform.position, ForceMode.Impulse);
+    }
+
+    private void movePlayer3() {
+        nozzle.GetComponent<Rigidbody>().AddForce(UnityEngine.Vector3.right * nozzleStrength);
     }
 }
