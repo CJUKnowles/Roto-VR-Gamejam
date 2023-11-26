@@ -15,7 +15,7 @@ public class aggro : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(player.transform.position);
+        transform.LookAt(player.transform.position, Vector3.up);
     }
     public void aggroState()
     {
