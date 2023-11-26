@@ -35,7 +35,7 @@ public class ControllerInput : MonoBehaviour
     private void useNozzle() {
         // Spray the smoke
         nozzle.GetComponent<LaunchProjectile>().Fire();
-        movePlayer3();
+        movePlayer1();
     }
 
     private void movePlayer1() {
